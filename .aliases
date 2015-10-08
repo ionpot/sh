@@ -1,0 +1,6 @@
+alias lsjs='ls *.js'
+alias lsjson='ls *.json'
+
+alias mtp='$HOME/node/deps/v8/tools/mac-tick-processor'
+
+source $HOME/.aliases-git
