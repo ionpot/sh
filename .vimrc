@@ -22,3 +22,5 @@ vn d xi
 "inoremap {<CR> {<CR>}<Esc>O
 "inoremap {{ {
 "inoremap {} {}
+
+autocmd FileType javascript call JSVC_setup()
