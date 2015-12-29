@@ -4,6 +4,10 @@ colorscheme jsvc
 let s:eof = '{$}'
 let s:handlers = {}
 
+function! s:get_cached(key)
+    return get(s:cache, a:key, '')
+endfunction
+
 function! s:escape(char)
     if a:char ==# "\n"
         return '\n'
@@ -39,7 +43,13 @@ function! s:match_expr(group, str, args)
 endfunction
 
 function! s:add_match(group, str)
-    call s:match_expr(a:group, a:str, '')
+    let cached = s:get_cached(a:str)
+
+    if cached !=# a:group
+        let s:cache[a:str] = a:group
+
+        call s:match_expr(a:group, a:str, '')
+    endif
 endfunction
 
 function! s:dead(text)
@@ -84,14 +94,24 @@ function! s:append_text(text)
 endfunction
 
 function! s:new_cluster(contains)
-    let s:c_count += 1
+    let cached = s:get_cached(a:contains)
 
-    let name = 'JSVC_c' . s:c_count
-    let args = ' contains=' . a:contains
+    if empty(cached)
+        let s:c_count += 1
 
-    exe 'syn cluster ' . name . args
+        let name = 'JSVC_c' . s:c_count
+        let args = ' contains=' . a:contains
 
-    return '@' . name
+        exe 'syn cluster ' . name . args
+
+        let name = '@' . name
+
+        let s:cache[a:contains] = name
+
+        return name
+    endif
+
+    return cached
 endfunction
 
 function! s:new_func()
@@ -121,13 +141,17 @@ function! s:new_func()
     return obj
 endfunction
 
+function! s:add_group(func, group)
+    let a:func.contains .= ',' . a:group
+endfunction
+
 function! s:new_group(func, depth)
     let s:g_count += 1
 
     let name = 'JSVC_g' . s:g_count
 
     let a:func.group = name
-    let a:func.contains .= ',' . name
+    call s:add_group(a:func, name)
 
     exe 'hi link ' . name . ' JSVC_' . a:depth
 
@@ -136,20 +160,31 @@ endfunction
 
 function! s:match_var_at(name, depth)
     let func = s:funcs[a:depth]
-    let group = func.group
-    let args = ''
 
-    if empty(group)
-        let group = s:new_group(func, a:depth)
+    let key = a:depth . a:name
+    let cached = s:get_cached(key)
+
+    if empty(cached)
+        let group = func.group
+        let args = ''
+
+        if empty(group)
+            let group = s:new_group(func, a:depth)
+        endif
+
+        let s:cache[key] = group
+
+        if s:depth
+            let args = 'contained'
+        endif
+
+        let str = '\<' . a:name . '\>'
+
+        call s:match_expr(group, str, args)
+
+    else
+        call s:add_group(func, cached)
     endif
-
-    if s:depth
-        let args = 'contained'
-    endif
-
-    let str = '\<' . a:name . '\>'
-
-    call s:match_expr(group, str, args)
 endfunction
 
 function! s:match_var(name)
@@ -577,6 +612,7 @@ function! s:handlers.func_end(char) dict
 endfunction
 
 function! s:begin()
+    let s:cache = {}
     let s:funcs = {}
 
     let s:state = ''
