@@ -471,13 +471,11 @@ function! s:handlers.scope(char) dict
         endif
 
     elseif a:char ==# '}'
-        let open = s:opened()
-
-        if empty(open)
-            call s:set_state('func_end')
+        if s:func.index
+            call s:close()
 
         else
-            call s:close()
+            call s:set_state('func_end')
         endif
     endif
 endfunction
@@ -589,19 +587,17 @@ function! s:handlers.func_end(char) dict
         let f = s:funcs[at]
 
         if !empty(name)
-            let open = s:opened()
-
             if a:char ==# '('
                 call s:match_var(name)
 
             elseif f.in_var
                 call s:match_var(name)
 
-            elseif empty(open)
-                call s:match_var_at(name, at)
+            elseif f.index
+                call s:match_var(name)
 
             else
-                call s:match_var(name)
+                call s:match_var_at(name, at)
             endif
         endif
 
