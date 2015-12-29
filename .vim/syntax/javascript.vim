@@ -192,8 +192,6 @@ function! s:pop_func()
     call s:match_func(func)
 
     call s:append_text(func.text)
-
-    call s:new_group(s:func, s:depth)
 endfunction
 
 function! s:handle(char)
