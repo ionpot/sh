@@ -100,7 +100,7 @@ function! s:new_func()
         let contains = s:new_cluster(contains)
 
     else
-        let contains = 'JSVC_dead,JSVC_prop'
+        let contains = 'JSVC_x,JSVC_dead,JSVC_prop'
     endif
 
     let id = 'JSVC_f' . s:f_count
