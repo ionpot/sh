@@ -142,7 +142,10 @@ function! s:new_func()
 endfunction
 
 function! s:add_group(func, group)
-    let a:func.contains .= ',' . a:group
+    if a:func.group !=# a:group
+        let a:func.contains .= ',' . a:group
+        let a:func.group = a:group
+    endif
 endfunction
 
 function! s:new_group(func, depth)
@@ -150,7 +153,6 @@ function! s:new_group(func, depth)
 
     let name = 'JSVC_g' . s:g_count
 
-    let a:func.group = name
     call s:add_group(a:func, name)
 
     exe 'hi link ' . name . ' JSVC_' . a:depth
