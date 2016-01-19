@@ -344,17 +344,17 @@ function! s:handlers.until_delim(char) dict
 endfunction
 
 function! s:handlers.regex(char) dict
-    call s:dead(a:char)
-
     let state = s:which_comment(a:char)
 
     if empty(state)
         let s:in_regex = 1
         let s:delim = '/'
 
-        call s:set_state('until_delim')
+        call s:to_state('until_delim', a:char)
 
     else
+        call s:dead(a:char)
+
         call s:set_state(state)
     endif
 endfunction
