@@ -16,7 +16,7 @@ function! s:escape(char)
         return ''
     endif
 
-    return escape(a:char, '\*[]')
+    return escape(a:char, '~\*[]')
 endfunction
 
 function! s:is_alpha(char)
