@@ -176,7 +176,7 @@ function! s:match_var_at(name, depth)
 
         let s:cache[key] = group
 
-        if s:depth
+        if a:depth
             let args = 'contained'
         endif
 
