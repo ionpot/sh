@@ -31,6 +31,21 @@ function! s:is_ws(char)
     return a:char =~? '\s'
 endfunction
 
+function! s:is_var(token)
+    if a:token ==# 'var'
+        return 1
+
+    elseif a:token ==# 'const'
+        return 1
+
+    elseif a:token ==# 'let'
+        return 1
+
+    else
+        return 0
+    endif
+endfunction
+
 function! s:match_expr(group, str, args)
     let pattern = ' *' . a:str . '*'
     let arg_str = ''
@@ -497,7 +512,7 @@ function! s:handlers.token(char) dict
 
             call s:to_state('func_def', a:char)
 
-        elseif hold ==# 'var'
+        elseif s:is_var(hold)
             call s:append_text(hold . a:char)
 
             let s:func.in_var = 1
