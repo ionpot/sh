@@ -1,6 +1,5 @@
-alias lsjs='ls *.js'
-alias lsjson='ls *.json'
+alias ll="ls -l"
+alias vi="vim"
 
-alias mtp='$HOME/node/deps/v8/tools/mac-tick-processor'
-
-source $HOME/.aliases-git
+alias src="source $HOME/.mkshrc && cd -"
+alias sus="systemctl suspend"
