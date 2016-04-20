@@ -1,4 +1,7 @@
 cd $HOME
 
+alias src="source $HOME/.mkshrc && cd -"
+
 source .aliases
 source .aliases-git
+source .functions

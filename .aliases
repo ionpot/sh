@@ -1,5 +1,5 @@
-alias ll="ls -l"
-alias vi="vim"
+alias ll='ls -l'
+alias vi='vim'
 
-alias src="source $HOME/.mkshrc && cd -"
-alias sus="systemctl suspend"
+alias jli='jslint'
+alias sus='systemctl suspend'
