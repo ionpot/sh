@@ -1,3 +1,33 @@
-function grjs {
+# ls given file types
+lsf() {
+    ls *.$1
+}
+
+# grep js files
+# excluding node_modules and hidden dirs
+grjs() {
     find . -not \( -path "*/\.*" -prune \) -not \( -path "*/node_modules/*" -prune \) -type f -name \*.js -exec grep -n "$1" {} \+
+}
+
+# new node module
+# create module skeleton into file
+nnm() {
+    cat >$1 <<JS
+"use strict";
+
+var P = require("node-aux/proto");
+
+var $2 = P.create(function () {
+});
+
+exports.create = function () {
+    return new $2();
+};
+JS
+}
+
+# $1 = binary string
+# $2 = output base
+function fromb {
+    node -p "parseInt('$1', 2).toString($2)"
 }
