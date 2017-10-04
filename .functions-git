@@ -1,0 +1,4 @@
+gclgh () {
+    path="https://github.com/$1/$2.git"
+    git clone "$path"
+}
