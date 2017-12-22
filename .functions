@@ -1,3 +1,11 @@
+# print text in color
+# $1 int color
+# $2 string text
+incolor () {
+	esc=$(printf "\e")
+	printf "$esc[3%sm%s$esc[0m" $1 "$2"
+}
+
 # ls given file types
 lsf() {
     ls *.$1
@@ -7,23 +15,6 @@ lsf() {
 # excluding node_modules and hidden dirs
 grjs() {
     find . -not \( -path "*/\.*" -prune \) -not \( -path "*/node_modules/*" -prune \) -type f -name \*.js -exec grep -n "$1" {} \+
-}
-
-# new node module
-# create module skeleton into file
-nnm() {
-    cat >$1 <<JS
-"use strict";
-
-var P = require("node-aux/proto");
-
-var $2 = P.create(function () {
-});
-
-exports.create = function () {
-    return new $2();
-};
-JS
 }
 
 # $1 = binary string
