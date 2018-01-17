@@ -22,3 +22,20 @@ grjs() {
 function fromb {
     node -p "parseInt('$1', 2).toString($2)"
 }
+
+# create .h and .c files from name
+# $1 = name
+cfiles () {
+	token=${1^^}_H
+	cat >$1.h <<CODE
+#ifndef $token
+#define $token
+
+#endif
+CODE
+	cat >$1.c <<CODE
+#include "$1.h"
+
+#include <assert.h>
+CODE
+}
