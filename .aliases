@@ -1,4 +1,6 @@
+alias l=ls
 alias ll='ls -l'
+alias p=pwd
 alias vi='vim'
 
 alias brt='xrandr --output DVI-I-1 --brightness'
