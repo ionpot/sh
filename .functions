@@ -39,3 +39,8 @@ CODE
 #include <assert.h>
 CODE
 }
+
+# ocamlbuild $1.native
+ocb () {
+	ocamlbuild "$1.native"
+}
