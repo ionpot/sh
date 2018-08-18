@@ -41,6 +41,6 @@ CODE
 }
 
 # ocamlbuild $1.native
-ocb () {
+ocbn () {
 	ocamlbuild "$1.native"
 }

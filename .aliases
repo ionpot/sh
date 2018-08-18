@@ -5,4 +5,5 @@ alias vi='vim'
 
 alias brt='xrandr --output DVI-I-1 --brightness'
 alias jli='jslint'
+alias ocb='ocamlbuild'
 alias sus='sudo systemctl suspend'
