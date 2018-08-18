@@ -40,6 +40,19 @@ CODE
 CODE
 }
 
+# create js files
+jsf () {
+	for x in "$@"
+	do
+		cat >$x.js <<CODE
+var x = require("./,.js");
+
+module.exports = function () {
+};
+CODE
+	done
+}
+
 # ocamlbuild $1.native
 ocbn () {
 	ocamlbuild "$1.native"
