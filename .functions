@@ -55,5 +55,6 @@ CODE
 
 # ocamlbuild $1.native
 ocbn () {
-	ocamlbuild "$1.native"
+	x=${1%.*}
+	ocamlbuild "$x.native"
 }
