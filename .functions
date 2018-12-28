@@ -17,6 +17,12 @@ grjs() {
     find . -not \( -path "*/\.*" -prune \) -not \( -path "*/node_modules/*" -prune \) -type f -name \*.js -exec grep -n "$1" {} \+
 }
 
+# grep ml and mli files
+# excluding _build and hidden dirs
+grml() {
+    find . -not \( -path "*/\.*" -prune \) -not \( -path "*/_build/*" -prune \) -type f \( -name '*.ml' -or -name '*.mli' \) -exec grep -n "$1" {} \+
+}
+
 # $1 = binary string
 # $2 = output base
 function fromb {
