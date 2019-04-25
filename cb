@@ -1,0 +1,12 @@
+#!/bin/sh
+path="$HOME/shared/.cb"
+reg=${1:-a}
+if [ $reg = - ]; then
+	reg=b
+fi
+file="$path/$reg"
+if [ -t 0 ]; then
+	cat "$file" 2>/dev/null
+else
+	cat >"$file" </dev/stdin
+fi
