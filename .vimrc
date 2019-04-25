@@ -1,14 +1,10 @@
-set number
-set relativenumber
-set ruler
+let $BASH_ENV = "~/sh/.load-aliases"
 
 set autoindent
 "set fdm=indent
 
-set expandtab
-set softtabstop=4
-set shiftwidth=4
-
 vn d xi
 
-filetype plugin on
+"execute pathogen#infect()
+
+filetype plugin indent on

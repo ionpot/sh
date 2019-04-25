@@ -1,0 +1,8 @@
+shopt -s expand_aliases
+
+path="$HOME/sh"
+
+source "$path/.aliases"
+source "$path/.aliases-git"
+source "$path/.functions"
+source "$path/.functions-git"
