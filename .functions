@@ -59,6 +59,18 @@ CODE
 	done
 }
 
+# ocamlbuild $1.cma
+ocba () {
+	x=${1%.*}
+	ocamlbuild "$x.cma"
+}
+
+# ocamlbuild $1.byte
+ocbb () {
+	x=${1%.*}
+	ocamlbuild "$x.byte"
+}
+
 # ocamlbuild $1.native
 ocbn () {
 	x=${1%.*}
