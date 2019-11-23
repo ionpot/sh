@@ -16,7 +16,7 @@ alias gr='git rebase'
 alias gt='git status'
 alias gy='git apply'
 
-alias gbc='git branch -r --contains'
+alias gbc='git branch --contains'
 alias gbe='git branch --edit-description'
 alias gca='git commit --amend --no-edit'
 alias gcf='git config'
