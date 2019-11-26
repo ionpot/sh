@@ -46,6 +46,11 @@ CODE
 CODE
 }
 
+# http status code
+hsc () {
+	node -p "http.STATUS_CODES[$1]"
+}
+
 # create js files
 jsf () {
 	for x in "$@"
