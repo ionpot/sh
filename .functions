@@ -64,6 +64,17 @@ CODE
 	done
 }
 
+# create ts files
+tsf () {
+	for x in "$@"
+	do
+		cat >$x.ts <<CODE
+import {} from ""
+export default () => {}
+CODE
+	done
+}
+
 # ocamlbuild $1.cma
 ocba () {
 	x=${1%.*}
