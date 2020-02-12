@@ -46,6 +46,24 @@ CODE
 CODE
 }
 
+# create .h and .cpp files from name
+# $1 = name
+cppf () {
+	token=${1^^}_H
+	cat >$1.h <<CODE
+#ifndef $token
+#define $token
+
+#endif
+CODE
+	cat >$1.cpp <<CODE
+#include "$1.h"
+
+namespace {
+}
+CODE
+}
+
 # http status code
 hsc () {
 	node -p "http.STATUS_CODES[$1]"
