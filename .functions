@@ -69,6 +69,11 @@ hsc () {
 	node -p "http.STATUS_CODES[$1]"
 }
 
+# pretty print json from stdin
+json () {
+	node $HOME/sh/json.js
+}
+
 # create js files
 jsf () {
 	for x in "$@"
