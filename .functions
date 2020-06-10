@@ -75,7 +75,7 @@ hsc () {
 
 # pretty print json from stdin
 json () {
-	node $HOME/sh/json.js
+	node $HOME/sh/json.js $@
 }
 
 # create js files
