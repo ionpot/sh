@@ -7,3 +7,12 @@ gclgh () {
     path="https://github.com/$1/$2.git"
     git clone "$path"
 }
+
+gg () {
+    format='%C(yellow)%h (%ci) %cn%Creset%n%s%n'
+    git log --format="$format" $@
+}
+
+ggh () {
+    gg $@ | head -n 14
+}
