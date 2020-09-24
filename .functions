@@ -119,3 +119,15 @@ ocbn () {
 	x=${1%.*}
 	ocamlbuild "$x.native"
 }
+
+# compile and run c source(s)
+crun () {
+	t=`mktemp`
+	flags="-std=c99 -Wall -Wextra -Werror -pedantic -o $t"
+	if [ -n "$1" ]; then
+		gcc $flags $@ && $t
+	else
+		gcc $flags -x c - && $t
+	fi
+	rm $t
+}
