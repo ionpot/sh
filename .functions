@@ -46,20 +46,28 @@ CODE
 CODE
 }
 
-# create .h and .cpp files from name
-# $1 = name
+# create .hpp and .cpp files
+# $1 = project name
+# $2 = file name
 cppf () {
-	token=${1^^}_H
-	cat >$1.h <<CODE
+	if [ -z "$2" ]; then
+		echo need file name
+		return
+	fi
+	token=${1^^}_${2^^}_HPP
+	cat >$2.hpp <<CODE
 #ifndef $token
 #define $token
 
+namespace $1 {
+}
+
 #endif
 CODE
-	cat >$1.cpp <<CODE
-#include "$1.h"
+	cat >$2.cpp <<CODE
+#include "$2.hpp"
 
-namespace {
+namespace $1 {
 }
 CODE
 }
