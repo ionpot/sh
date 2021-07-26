@@ -2,6 +2,8 @@ let $BASH_ENV = "~/sh/.load-aliases"
 
 set autoindent
 "set fdm=indent
+set tabstop=4
+set shiftwidth=4
 
 vn d xi
 
