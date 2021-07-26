@@ -7,6 +7,8 @@ vn d xi
 
 "execute pathogen#infect()
 
+"let g:ctrlp_custom_ignore = { "dir": "[_]\\?build\\|node_modules" }
+
 "exclude these directories when generating tags
 "let g:gutentags_ctags_exclude = [".git", "_build", "node_modules"]
 
