@@ -2,7 +2,7 @@
 # $1 int color
 # $2 string text
 incolor () {
-	esc=$(printf "\e")
+	local esc=$(printf "\e")
 	printf "$esc[3%sm%s$esc[0m" $1 "$2"
 }
 
@@ -32,7 +32,7 @@ function fromb {
 # create .h and .c files from name
 # $1 = name
 cfiles () {
-	token=${1^^}_H
+	local token=${1^^}_H
 	cat >$1.h <<CODE
 #ifndef $token
 #define $token
@@ -108,26 +108,26 @@ CODE
 
 # ocamlbuild $1.cma
 ocba () {
-	x=${1%.*}
+	local x=${1%.*}
 	ocamlbuild "$x.cma"
 }
 
 # ocamlbuild $1.byte
 ocbb () {
-	x=${1%.*}
+	local x=${1%.*}
 	ocamlbuild "$x.byte"
 }
 
 # ocamlbuild $1.native
 ocbn () {
-	x=${1%.*}
+	local x=${1%.*}
 	ocamlbuild "$x.native"
 }
 
 # compile and run c source(s)
 crun () {
-	t=`mktemp`
-	flags="-std=c99 -Wall -Wextra -Werror -pedantic -o $t"
+	local t=`mktemp`
+	local flags="-std=c99 -Wall -Wextra -Werror -pedantic -o $t"
 	if [ -n "$1" ]; then
 		gcc $flags $@ && $t
 	else
