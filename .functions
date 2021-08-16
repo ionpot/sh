@@ -47,22 +47,18 @@ CODE
 }
 
 # create .hpp and .cpp files
-# $1 = project name
+# $1 = namespace
 # $2 = file name
 cppf () {
 	if [ -z "$2" ]; then
 		echo need file name
 		return
 	fi
-	token=${1^^}_${2^^}_HPP
 	cat >$2.hpp <<CODE
-#ifndef $token
-#define $token
+#pragma once
 
 namespace $1 {
 }
-
-#endif
 CODE
 	cat >$2.cpp <<CODE
 #include "$2.hpp"
