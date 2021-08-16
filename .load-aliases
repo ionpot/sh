@@ -1,8 +1,11 @@
-shopt -s expand_aliases
+#!/bin/sh
 
-path="$HOME/sh"
-
-source "$path/.aliases"
-source "$path/.aliases-git"
-source "$path/.functions"
-source "$path/.functions-git"
+f() {
+	local dir="$HOME/sh"
+	source "$dir/.aliases"
+	source "$dir/.aliases-git"
+	source "$dir/.functions"
+	source "$dir/.functions-git"
+}
+f
+unset -f f
