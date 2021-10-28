@@ -7,3 +7,4 @@ git config --global merge.conflictstype diff3
 git config --global mergetool.prompt false
 git config --global mergetool.keepbackup false
 #git config --global credential.helper osxkeychain
+git config --global core.excludesfile ~/.gitignore
