@@ -1,0 +1,11 @@
+modprobe -a vboxsf
+mount -t vboxsf shared /mnt/shared
+
+setting framebuffer resolution using fbset in /etc/local.d
+
+/etc/resolv.conf gets overwritten by udhcpd
+Its default configuration may be overwritten by /etc/udhcpc/udhcpc.conf
+dns='8.8.8.8'
+
+need for git add --patch:
+apk add git-perl
