@@ -6,4 +6,4 @@ git config --global merge.tool vimdiff
 git config --global merge.conflictstype diff3
 git config --global mergetool.prompt false
 git config --global mergetool.keepbackup false
-git config --global credential.helper osxkeychain
+#git config --global credential.helper osxkeychain
