@@ -1,5 +1,7 @@
 "syntax on
 
+iab ff function
+
 nnoremap <buffer> ; :w !jslint<CR>
 
 highlight ColorColumn ctermbg=magenta
