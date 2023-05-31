@@ -13,6 +13,11 @@ gg () {
     git log --format="$format" $@
 }
 
+ggg () {
+	local format='%Cred%h%Creset - %Cgreen(%ad)%C(yellow)%d%Creset %s %C(bold blue)<%an>%Creset'
+	git log --graph --pretty=format:"$format" --abbrev-commit --date=local $@
+}
+
 ggh () {
     gg $@ | head -n 14
 }
