@@ -15,6 +15,7 @@ alias gy='git apply'
 
 alias gbc='git branch --contains'
 alias gbe='git branch --edit-description'
+alias gbs='git branch --sort=-committerdate'
 alias gca='git commit --amend --no-edit'
 alias gcf='git config'
 alias gdh='git diff HEAD'
