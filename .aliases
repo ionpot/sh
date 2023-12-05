@@ -2,7 +2,7 @@ alias e=less
 alias l=ls
 alias ll='ls -l'
 alias p=pwd
-alias v='vim'
+alias v='nvim'
 
 alias brt='xrandr --output DVI-I-1 --brightness'
 alias jli='jslint'
