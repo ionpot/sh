@@ -17,7 +17,6 @@ require('nvim-treesitter.configs').setup {
 	  "ocaml_interface",
 	  "python",
 	  "query",
-	  "rust",
 	  "svelte",
 	  "typescript",
 	  "vim",

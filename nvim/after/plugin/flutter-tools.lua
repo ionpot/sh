@@ -1,1 +1,7 @@
-require("flutter-tools").setup {} -- use defaults
+require("flutter-tools").setup {
+	lsp = {
+		settings = {
+			renameFilesWithClasses = "prompt"
+		}
+	}
+} -- use defaults
