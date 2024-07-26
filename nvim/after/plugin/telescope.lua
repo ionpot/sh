@@ -31,7 +31,7 @@ keymap('v', '<space>g', function()
 	builtin.current_buffer_fuzzy_find({ default_text = text })
 end)
 
-keymap('n', '<space>G', ':Telescope live_grep<cr>')
+keymap('n', '<space>G', ':Telescope live_grep_args<cr>')
 keymap('v', '<space>G', function()
 	local text = getVisualSelection()
 	builtin.live_grep({ default_text = text })
