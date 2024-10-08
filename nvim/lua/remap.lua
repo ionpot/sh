@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -41,3 +43,17 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 vim.keymap.set("n", "_", "<cmd>update<CR>")
 vim.keymap.set("n", "Q", "<cmd>quit<CR>")
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(args)
+		local opts = { buffer = args.buf, remap = false }
+		vim.keymap.set("n", "<leader>ws", vim.lsp.buf.workspace_symbol, opts)
+		vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
+		vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+		vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+	end,
+})
