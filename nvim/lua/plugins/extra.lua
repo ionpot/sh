@@ -58,7 +58,9 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {},
+		opts = {
+			view = { width = 40 },
+		},
 		keys = {
 			{ "<leader>nt", vim.cmd.NvimTreeFindFile },
 			{ "<leader>nn", vim.cmd.NvimTreeOpen },
