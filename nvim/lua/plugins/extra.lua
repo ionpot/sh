@@ -5,14 +5,14 @@ end
 
 local function getVisualSelection()
 	vim.cmd('noau normal! "vy"')
-	local text = vim.fn.getreg('v')
-	vim.fn.setreg('v', {})
+	local text = vim.fn.getreg("v")
+	vim.fn.setreg("v", {})
 
 	text = string.gsub(text, "\n", "")
 	if #text > 0 then
 		return text
 	else
-		return ''
+		return ""
 	end
 end
 
@@ -33,7 +33,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-			local cap = require('cmp_nvim_lsp').default_capabilities()
+			local cap = require("cmp_nvim_lsp").default_capabilities()
 			require("mason-lspconfig").setup_handlers {
 				function (server_name)
 					require("lspconfig")[server_name].setup {
@@ -145,16 +145,16 @@ return {
 	{
 		"theprimeagen/harpoon",
 		config = function()
-			local mark = require('harpoon.mark')
-			local ui = require('harpoon.ui')
+			local mark = require("harpoon.mark")
+			local ui = require("harpoon.ui")
 
-			keymap('n', '<leader>a', mark.add_file)
-			keymap('n', '<leader>h', ui.toggle_quick_menu)
+			keymap("n", "<leader>a", mark.add_file)
+			keymap("n", "<leader>h", ui.toggle_quick_menu)
 
-			keymap('n', '<C-h>', function() ui.nav_file(1) end)
-			keymap('n', '<C-t>', function() ui.nav_file(2) end)
-			keymap('n', '<C-n>', function() ui.nav_file(3) end)
-			keymap('n', '<C-s>', function() ui.nav_file(4) end)
+			keymap("n", "<C-h>", function() ui.nav_file(1) end)
+			keymap("n", "<C-t>", function() ui.nav_file(2) end)
+			keymap("n", "<C-n>", function() ui.nav_file(3) end)
+			keymap("n", "<C-s>", function() ui.nav_file(4) end)
 		end,
 	},
 	{
