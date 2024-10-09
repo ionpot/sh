@@ -86,23 +86,40 @@ return {
 			"nvim-telescope/telescope-live-grep-args.nvim",
 		},
 		config = function()
-			require("telescope").load_extension("live_grep_args")
-			local builtin = require('telescope.builtin')
-			keymap('n', '<leader>pf', builtin.find_files)
-			keymap('n', '<C-p>', builtin.git_files)
-			keymap('n', '<leader>ps', function()
+			local telescope = require("telescope")
+			local lga_actions = require("telescope-live-grep-args.actions")
+			telescope.setup({
+				extensions = {
+					live_grep_args = {
+						auto_quoting = true,
+						mappings = {
+							i = { ["<C-k>"] = lga_actions.quote_prompt() },
+						},
+					},
+				},
+			})
+			telescope.load_extension("live_grep_args")
+
+			local builtin = require("telescope.builtin")
+			keymap("n", "<leader>pf", builtin.find_files)
+			keymap("n", "<C-p>", builtin.git_files)
+			keymap("n", "<leader>ps", function()
 				-- brew install ripgrep for this
 				builtin.grep_string({ search = vim.fn.input("Grep > ") })
 			end)
-			keymap('n', '<space>tt', ':Telescope current_buffer_fuzzy_find<cr>')
-			keymap('v', '<space>g', function()
+			keymap("n", "<space>tt", ":Telescope current_buffer_fuzzy_find<cr>")
+			keymap("v", "<space>g", function()
 				local text = getVisualSelection()
 				builtin.current_buffer_fuzzy_find({ default_text = text })
 			end)
-			keymap('n', '<space>G', ':Telescope live_grep_args<cr>')
-			keymap('v', '<space>G', function()
-				local text = getVisualSelection()
-				builtin.live_grep({ default_text = text })
+
+			local lga_fn = require("telescope-live-grep-args.shortcuts")
+			--keymap("n", "<space>G", ":Telescope live_grep_args<cr>")
+			keymap("n", "<space>G", function ()
+				lga_fn.grep_word_under_cursor({ postfix = " " })
+			end)
+			keymap("v", "<space>G", function ()
+				lga_fn.grep_visual_selection({ postfix = " " })
 			end)
 		end
 	},
