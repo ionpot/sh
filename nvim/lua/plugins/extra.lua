@@ -72,7 +72,10 @@ return {
 		config = function ()
 			local c = require("nvim-treesitter.configs")
 			c.setup({
-				highlight = { enable = true },
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = true,
+				},
 			})
 		end
 	},
