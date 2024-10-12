@@ -70,7 +70,7 @@ return {
 		config = function ()
 			local c = require("nvim-treesitter.configs")
 			c.setup({
-				modules = { highlight = { enable = true } },
+				highlight = { enable = true },
 			})
 		end
 	},
