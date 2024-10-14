@@ -59,15 +59,15 @@ return {
 			}
 			local select_opt = { behavior = cmp.SelectBehavior.Insert }
 			opts.mapping = cmp.mapping.preset.insert({
-				['<C-u>'] = cmp.mapping.scroll_docs(-4),
-				['<C-e>'] = cmp.mapping.scroll_docs(4),
-				['<C-p>'] = cmp.mapping.select_prev_item(select_opt),
-				['<C-n>'] = cmp.mapping.select_next_item(select_opt),
-				['<C-h>'] = cmp.mapping.confirm({ select = true }),
+				["<C-u>"] = cmp.mapping.scroll_docs(-4),
+				["<C-e>"] = cmp.mapping.scroll_docs(4),
+				["<C-p>"] = cmp.mapping.select_prev_item(select_opt),
+				["<C-n>"] = cmp.mapping.select_next_item(select_opt),
+				["<C-h>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
 			})
 			opts.sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
+				{ name = "nvim_lsp" },
 				{ name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
 			}, {
 				{ name = "buffer" },
