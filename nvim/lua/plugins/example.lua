@@ -60,7 +60,7 @@ return {
 			local select_opt = { behavior = cmp.SelectBehavior.Insert }
 			opts.mapping = cmp.mapping.preset.insert({
 				['<C-u>'] = cmp.mapping.scroll_docs(-4),
-				['<C-d>'] = cmp.mapping.scroll_docs(4),
+				['<C-e>'] = cmp.mapping.scroll_docs(4),
 				['<C-p>'] = cmp.mapping.select_prev_item(select_opt),
 				['<C-n>'] = cmp.mapping.select_next_item(select_opt),
 				['<C-h>'] = cmp.mapping.confirm({ select = true }),
