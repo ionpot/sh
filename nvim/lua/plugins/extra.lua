@@ -107,7 +107,11 @@ return {
 				-- brew install ripgrep for this
 				builtin.grep_string({ search = vim.fn.input("Grep > ") })
 			end)
-			keymap("n", "<space>tt", ":Telescope current_buffer_fuzzy_find<cr>")
+			--keymap("n", "<space>tt", ":Telescope current_buffer_fuzzy_find<cr>")
+			keymap("n", "<space>tt", function()
+				local text = vim.fn.expand("<cword>")
+				builtin.current_buffer_fuzzy_find({ default_text = text })
+			end)
 			keymap("v", "<space>g", function()
 				local text = getVisualSelection()
 				builtin.current_buffer_fuzzy_find({ default_text = text })
