@@ -38,6 +38,7 @@ return {
 				function (server_name)
 					require("lspconfig")[server_name].setup {
 						capabilities = cap,
+						root_dir = vim.fs.root(0, ".git"),
 					}
 				end,
 			}
