@@ -181,7 +181,11 @@ return {
 			-- REQUIRED
 
 			keymap("n", "<leader>a", function() harpoon:list():add() end)
-			keymap("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+			keymap("n", "<leader>h", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list(), {
+					height_in_lines = 40
+				})
+			end)
 
 			keymap("n", "<C-h>", function() harpoon:list():select(1) end)
 			keymap("n", "<C-t>", function() harpoon:list():select(2) end)
