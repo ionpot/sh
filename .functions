@@ -127,11 +127,11 @@ ocbn () {
 # compile and run c source(s)
 crun () {
 	local t=`mktemp`
-	local flags="-std=c99 -Wall -Wextra -Werror -pedantic -o $t"
+	local cmd=(cc -std=c99 -Wall -Wextra -Werror -pedantic -o $t)
 	if [ -n "$1" ]; then
-		gcc $flags $@ && $t
+		$cmd[@] $@ && $t
 	else
-		gcc $flags -x c - && $t
+		$cmd[@] -x c - && $t
 	fi
 	rm $t
 }
