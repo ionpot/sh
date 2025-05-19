@@ -32,17 +32,6 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
-		config = function()
-			local cap = require("cmp_nvim_lsp").default_capabilities()
-			require("mason-lspconfig").setup_handlers {
-				function (server_name)
-					require("lspconfig")[server_name].setup {
-						capabilities = cap,
-						root_dir = vim.fs.root(0, ".git"),
-					}
-				end,
-			}
-		end
 	},
 	{
 		"folke/lazydev.nvim",
