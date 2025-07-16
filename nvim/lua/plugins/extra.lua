@@ -102,6 +102,7 @@ return {
 				local text = vim.fn.expand("<cword>")
 				builtin.current_buffer_fuzzy_find({ default_text = text })
 			end)
+			keymap("n", "<leader>g", builtin.grep_string)
 			keymap("v", "<leader>g", function()
 				local text = getVisualSelection()
 				builtin.current_buffer_fuzzy_find({ default_text = text })
