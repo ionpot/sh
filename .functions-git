@@ -10,7 +10,7 @@ gclgh () {
 
 gg () {
     local format='%C(yellow)%h (%ci) %cn%Creset%n%s%n'
-    git log --format="$format" $@
+    git log --first-parent --format="$format" $@
 }
 
 ggg () {
