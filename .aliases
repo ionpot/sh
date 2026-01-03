@@ -1,6 +1,6 @@
 alias e=less
-alias l=ls
-alias ll='ls -l'
+alias l='ls -Gp'
+alias ll='ls -lhGp'
 alias p=pwd
 alias v='nvim'
 

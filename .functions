@@ -8,7 +8,7 @@ incolor () {
 
 # ls given file types
 lsf() {
-    ls *.$1
+    ls -G *.$1
 }
 
 # grep js files
