@@ -3,6 +3,11 @@ gbd () {
     git config "branch.$name.description"
 }
 
+gbu () {
+    local target=$(git rev-parse --abbrev-ref $1@{u})
+    git branch -f $1 $target
+}
+
 gclgh () {
     local url="https://github.com/$1/$2.git"
     git clone "$url"
