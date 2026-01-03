@@ -45,12 +45,16 @@ return {
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip", -- LuaSnip completion source
 		},
 		opts = function(_, opts)
 			local cmp = require("cmp")
+			local luasnip = require("luasnip")
 			opts.snippet = {
 				expand = function(args)
-					vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+					--vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+					luasnip.lsp_expand(args.body)
 				end,
 			}
 			opts.window = {
@@ -67,6 +71,7 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			})
 			opts.sources = cmp.config.sources({
+				{ name = "luasnip" },
 				{ name = "nvim_lsp" },
 				{ name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
 			}, {
