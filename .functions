@@ -1,3 +1,9 @@
+# create and change into directory
+mkcd() {
+	mkdir -p "$1"
+	cd "$1"
+}
+
 # print text in color
 # $1 int color
 # $2 string text
