@@ -1,6 +1,13 @@
 gbd () {
-    local name=$(git rev-parse --abbrev-ref HEAD)
+    local head=$(git branch --show-current)
+    local name=${1:-$head}
     git config "branch.$name.description"
+}
+
+gbdesc () {
+    local head=$(git branch --show-current)
+    local name=${2:-$head}
+    git config "branch.$name.description" "$1"
 }
 
 gbu () {
