@@ -71,7 +71,7 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			})
 			opts.sources = cmp.config.sources({
-				{ name = "luasnip" },
+				-- { name = "luasnip" },
 				{ name = "nvim_lsp" },
 				{ name = "lazydev", group_index = 0 }, -- set group index to 0 to skip loading LuaLS completions
 			}, {
