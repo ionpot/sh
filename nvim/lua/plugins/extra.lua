@@ -140,6 +140,29 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-live-grep-args.nvim",
 		},
+		keys = {
+			{ "<leader>pf", function() require("telescope.builtin").find_files() end },
+			{ "<C-p>", function() require("telescope.builtin").git_files() end },
+			{ "<leader>ps", function()
+				-- brew install ripgrep for this
+				require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
+			end },
+			{ "<leader>tt", function()
+				local text = vim.fn.expand("<cword>")
+				require("telescope.builtin").current_buffer_fuzzy_find({ default_text = text })
+			end },
+			{ "<leader>g", function() require("telescope.builtin").grep_string() end, mode = "n" },
+			{ "<leader>g", function()
+				local text = getVisualSelection()
+				require("telescope.builtin").current_buffer_fuzzy_find({ default_text = text })
+			end, mode = "v" },
+			{ "<leader>G", function()
+				require("telescope-live-grep-args.shortcuts").grep_word_under_cursor({ postfix = " " })
+			end, mode = "n" },
+			{ "<leader>G", function()
+				require("telescope-live-grep-args.shortcuts").grep_visual_selection({ postfix = " " })
+			end, mode = "v" },
+		},
 		config = function()
 			local telescope = require("telescope")
 			local lga_actions = require("telescope-live-grep-args.actions")
@@ -154,31 +177,6 @@ return {
 				},
 			})
 			telescope.load_extension("live_grep_args")
-
-			local builtin = require("telescope.builtin")
-			keymap("n", "<leader>pf", builtin.find_files)
-			keymap("n", "<C-p>", builtin.git_files)
-			keymap("n", "<leader>ps", function()
-				-- brew install ripgrep for this
-				builtin.grep_string({ search = vim.fn.input("Grep > ") })
-			end)
-			keymap("n", "<leader>tt", function()
-				local text = vim.fn.expand("<cword>")
-				builtin.current_buffer_fuzzy_find({ default_text = text })
-			end)
-			keymap("n", "<leader>g", builtin.grep_string)
-			keymap("v", "<leader>g", function()
-				local text = getVisualSelection()
-				builtin.current_buffer_fuzzy_find({ default_text = text })
-			end)
-
-			local lga_fn = require("telescope-live-grep-args.shortcuts")
-			keymap("n", "<leader>G", function ()
-				lga_fn.grep_word_under_cursor({ postfix = " " })
-			end)
-			keymap("v", "<leader>G", function ()
-				lga_fn.grep_visual_selection({ postfix = " " })
-			end)
 		end
 	},
 	{
