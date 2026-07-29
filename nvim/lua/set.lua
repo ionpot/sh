@@ -5,8 +5,6 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups in NvimTree
 vim.opt.termguicolors = true
 
---vim.opt.guicursor = ""
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -19,8 +17,6 @@ vim.opt.smartindent = true
 
 vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
---vim.opt.foldmethod = "expr"
---vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.opt.wrap = false
 
