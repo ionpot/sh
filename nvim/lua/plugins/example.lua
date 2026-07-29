@@ -50,7 +50,7 @@ return {
 				["<C-e>"] = cmp.mapping.scroll_docs(4),
 				["<C-p>"] = cmp.mapping.select_prev_item(select_opt),
 				["<C-n>"] = cmp.mapping.select_next_item(select_opt),
-				["<C-h>"] = cmp.mapping.confirm({ select = true }),
+				["<C-l>"] = cmp.mapping.confirm({ select = true }),
 				["<C-Space>"] = cmp.mapping.complete(),
 			})
 			opts.sources = cmp.config.sources({
