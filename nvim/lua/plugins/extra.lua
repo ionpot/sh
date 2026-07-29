@@ -23,7 +23,10 @@ return {
 		dependencies = {
 			"williamboman/mason.nvim",
 		},
-		opts = {},
+		opts = {
+			ensure_installed = { "lua_ls", "ts_ls" },
+			automatic_enable = true,
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -32,6 +35,19 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
+		config = function()
+			vim.lsp.config("*", {
+				capabilities = require("cmp_nvim_lsp").default_capabilities(),
+			})
+
+			vim.lsp.config("lua_ls", {
+				settings = {
+					Lua = {
+						diagnostics = { globals = { "vim" } },
+					},
+				},
+			})
+		end,
 	},
 	{
 		"L3MON4D3/LuaSnip",
