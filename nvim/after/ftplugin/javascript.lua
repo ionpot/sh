@@ -1,1 +1,1 @@
-vim.cmd("iab ff function")
+vim.cmd("iabbrev <buffer> ff function")
