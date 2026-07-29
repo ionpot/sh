@@ -46,7 +46,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip", -- LuaSnip completion source
 		},
 		opts = function(_, opts)
 			local cmp = require("cmp")
