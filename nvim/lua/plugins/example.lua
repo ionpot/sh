@@ -10,10 +10,6 @@ return {
 		end,
 	},
 
-	-- I have a separate config.mappings file where I require which-key.
-	-- With lazy the plugin will be automatically loaded when it is required somewhere
-	{ "folke/which-key.nvim", lazy = true },
-
 	{
 		"dstein64/vim-startuptime",
 		-- lazy-load on a command
