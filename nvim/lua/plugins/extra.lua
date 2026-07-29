@@ -158,7 +158,6 @@ return {
 				-- brew install ripgrep for this
 				builtin.grep_string({ search = vim.fn.input("Grep > ") })
 			end)
-			--keymap("n", "<leader>tt", ":Telescope current_buffer_fuzzy_find<cr>")
 			keymap("n", "<leader>tt", function()
 				local text = vim.fn.expand("<cword>")
 				builtin.current_buffer_fuzzy_find({ default_text = text })
@@ -170,7 +169,6 @@ return {
 			end)
 
 			local lga_fn = require("telescope-live-grep-args.shortcuts")
-			--keymap("n", "<leader>G", ":Telescope live_grep_args<cr>")
 			keymap("n", "<leader>G", function ()
 				lga_fn.grep_word_under_cursor({ postfix = " " })
 			end)
