@@ -106,16 +106,20 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
+		lazy = false,
 		build = ":TSUpdate",
-		config = function ()
-			local c = require("nvim-treesitter.configs")
-			c.setup({
-				highlight = {
-					enable = true,
-					additional_vim_regex_highlighting = true,
-				},
+		config = function()
+			require("nvim-treesitter").install({
+				"cpp", "git_rebase", "gitcommit", "go", "lua",
+				"markdown", "python", "sql", "templ", "typescript", "vimdoc",
 			})
-		end
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function()
+					pcall(vim.treesitter.start)
+				end,
+			})
+		end,
 	},
 	{
 		"nvimtools/none-ls.nvim",
